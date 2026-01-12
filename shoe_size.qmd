@@ -1,0 +1,34 @@
+
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_csv("shoe-size-samples.csv")
+df_1 = pd.read_csv("class_shoe_sizes_gender.csv")
+```
+
+```{python}
+germany_males = df.query("sex == 'man'")
+germany_females = df.query("sex == 'woman'")
+
+print(germany_males)
+print(germany_females)
+```
+
+
+```{python}
+m_height_per_shoe = germany_males["height"].div(germany_males["shoe_size"])
+f_height_per_shoe = germany_females["height"].div(germany_females["shoe_size"])
+
+print(m_height_per_shoe.mean())
+print(f_height_per_shoe)
+
+```
